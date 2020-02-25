@@ -9,9 +9,15 @@ import {
   faSoundcloud,
 } from '@fortawesome/free-brands-svg-icons';
 
-import Contact from '#components/Contact';
-import Menu from '#components/Menu';
-import { GlobalStyle, ThemeProvider } from '#lib/theme';
+import { GlobalStyle } from '#lib/theme';
+
+import Contact from './Contact';
+import Menu from './Menu';
+
+interface Props {
+  children: JSX.Element | JSX.Element[];
+  currentPage: string;
+}
 
 const Wrapper = styled.main`
   position: fixed;
@@ -23,11 +29,6 @@ const Wrapper = styled.main`
   overflow-y: scroll;
   overflow-x: hidden;
 `;
-
-interface Props {
-  children: JSX.Element | JSX.Element[];
-  currentPage: string;
-}
 
 const menuItems = [
   { content: 'TOUR', url: '/tour' },
@@ -62,12 +63,10 @@ const contactItems = [
 const Layout = ({ children, currentPage }: Props) => {
   return (
     <HelmetProvider>
-      <ThemeProvider>
-        <GlobalStyle />
-        <Wrapper data-testid="layout-container">{children}</Wrapper>
-        <Menu items={menuItems} current={currentPage} />
-        <Contact items={contactItems} />
-      </ThemeProvider>
+      <GlobalStyle />
+      <Wrapper data-testid="layout-container">{children}</Wrapper>
+      <Menu items={menuItems} current={currentPage} />
+      <Contact items={contactItems} />
     </HelmetProvider>
   );
 };
