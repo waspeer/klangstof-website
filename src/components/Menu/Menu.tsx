@@ -68,15 +68,17 @@ const MenuList = styled.ul`
 
 const Menu = ({ current, items }: MenuProps) => {
   return (
-    <MenuList>
-      {items.map(({ content, url }) =>
-        current === content ? (
-          <MenuItem content={<FontAwesomeIcon icon={faCaretUp} />} key="back" url="/" />
-        ) : (
-          <MenuItem content={content} key={url} url={url} />
-        ),
-      )}
-    </MenuList>
+    <nav>
+      <MenuList>
+        {items.map(({ content, url }) =>
+          current === content ? (
+            <MenuItem content={<FontAwesomeIcon icon={faCaretUp} />} key="back" url="/" />
+          ) : (
+            <MenuItem content={content} key={url} url={url} />
+          ),
+        )}
+      </MenuList>
+    </nav>
   );
 };
 
