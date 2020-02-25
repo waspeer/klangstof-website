@@ -26,16 +26,12 @@ const MenuItemWrapper = styled.li`
 const MenuItem = ({ content, url }: MenuItemProps) => {
   const isExternal = /^https?:\/\//.test(url);
 
-  return (
-    <MenuItemWrapper data-testid="MenuItem">
-      {isExternal ? (
-        <a data-testid="MenuItemExternalLink" href={url}>
-          {content}
-        </a>
-      ) : (
-        <Link to={url}>{content}</Link>
-      )}
-    </MenuItemWrapper>
+  return isExternal ? (
+    <a data-testid="MenuItemExternalLink" href={url}>
+      {content}
+    </a>
+  ) : (
+    <Link to={url}>{content}</Link>
   );
 };
 
@@ -66,20 +62,22 @@ const MenuList = styled.ul`
   transition: font-size 0.2s;
 `;
 
-const Menu = ({ current, items }: MenuProps) => {
-  return (
-    <nav>
-      <MenuList>
-        {items.map(({ content, url }) =>
-          current === content ? (
-            <MenuItem content={<FontAwesomeIcon icon={faCaretUp} />} key="back" url="/" />
-          ) : (
-            <MenuItem content={content} key={url} url={url} />
-          ),
-        )}
-      </MenuList>
-    </nav>
-  );
-};
+const Menu = ({ current, items }: MenuProps) => (
+  <nav>
+    <MenuList>
+      {items.map(({ content, url }) =>
+        current === content ? (
+          <MenuItemWrapper data-testid="MenuItem" key="back">
+            <MenuItem content={<FontAwesomeIcon icon={faCaretUp} />} key="menuItem-back" url="/" />
+          </MenuItemWrapper>
+        ) : (
+          <MenuItemWrapper data-testid="MenuItem" key={`menuItem-${url}`}>
+            <MenuItem content={content} url={url} />
+          </MenuItemWrapper>
+        ),
+      )}
+    </MenuList>
+  </nav>
+);
 
 export default Menu;
