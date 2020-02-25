@@ -22,6 +22,7 @@
       "#components/*": ["./components/*"],
       "#lib/*": ["./lib/*"],
       "#pages/*": ["./pages/*"],
+      "#images/*": ["./images/*"],
       "#test/*": ["../test/*"]
     }
   }

@@ -1,13 +1,13 @@
 import React from 'react';
 
+import Collage from '#components/Collage';
 import Layout from '#components/Layout';
 import SEO from '#components/Seo';
 
 const IndexPage = () => (
-  <Layout>
+  <Layout currentPage="HOME">
     <SEO title="Home" />
-    <h1>Stillness</h1>
-    <p>Sleepless nights all of the time</p>
+    <Collage />
   </Layout>
 );
 

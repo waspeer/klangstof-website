@@ -28,7 +28,7 @@ module.exports = {
         background_color: '#edece6',
         theme_color: '#c84f68',
         display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png',
+        icon: 'src/images/icon.png',
       },
     },
     'gatsby-plugin-typescript',
@@ -38,6 +38,7 @@ module.exports = {
         '#components': path.resolve(__dirname, './src/components'),
         '#lib': path.resolve(__dirname, './src/lib'),
         '#pages': path.resolve(__dirname, './src/pages'),
+        '#images': path.resolve(__dirname, './src/images'),
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
