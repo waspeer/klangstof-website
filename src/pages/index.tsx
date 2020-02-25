@@ -6,7 +6,7 @@ import SEO from '#components/Seo';
 
 const IndexPage = () => (
   <Layout currentPage="HOME">
-    <SEO title="Home" />
+    <SEO title="the noise you make is silent" />
     <Collage />
   </Layout>
 );

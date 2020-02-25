@@ -44,7 +44,7 @@ const Seo = ({ description = '', lang = 'en', meta = [], title }: Props) => {
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate="Klangstof | %s"
       meta={[
         {
           name: 'description',
