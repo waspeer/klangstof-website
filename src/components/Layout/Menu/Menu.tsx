@@ -60,6 +60,10 @@ const MenuList = styled.ul`
   transform: rotate(-90deg);
   transform-origin: left top;
   transition: font-size 0.2s;
+
+  @media (max-height: 450px) {
+    font-size: 7vh;
+  }
 `;
 
 const Menu = ({ current, items }: MenuProps) => (
