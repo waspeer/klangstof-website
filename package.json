@@ -1,8 +1,8 @@
 {
-  "name": "stillness",
+  "name": "klangstof-website",
   "private": true,
-  "description": "My personal Gatsby starter",
-  "version": "1.1.0",
+  "description": "Website for the band Klangstof",
+  "version": "0.0.0",
   "author": "Wannes Salomé <mail@wannessalome.nl>",
   "dependencies": {
     "gatsby": "^2.19.7",
@@ -90,9 +90,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/waspeer/stillness"
+    "url": "https://github.com/waspeer/klangstof-website"
   },
   "bugs": {
-    "url": "https://github.com/waspeer/stillness/issues"
+    "url": "https://github.com/waspeer/klangstof-website/issues"
   }
 }

@@ -4,8 +4,8 @@ const path = require('path');
 
 module.exports = {
   siteMetadata: {
-    title: 'Stillness',
-    description: 'Personal Gatsby starter',
+    title: 'Klangstof',
+    description: 'Music, shows and merchandise.',
     author: 'Wannes Salomé',
   },
   plugins: [
@@ -22,13 +22,13 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'stillness',
-        short_name: 'stillness',
+        name: 'Klangstof',
+        short_name: 'Klangstof',
         start_url: '/',
-        background_color: '#663399',
-        theme_color: '#663399',
+        background_color: '#edece6',
+        theme_color: '#c84f68',
         display: 'minimal-ui',
-        // icon: 'src/images/gatsby-icon.png',
+        icon: 'src/images/gatsby-icon.png',
       },
     },
     'gatsby-plugin-typescript',
