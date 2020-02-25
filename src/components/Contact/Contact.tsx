@@ -67,7 +67,7 @@ const ContactListItem = styled.li`
 
 const Contact = ({ items }: ContactProps) => {
   return (
-    <nav>
+    <nav aria-label="contact">
       <ContactList>
         {items.map(({ content, name, url }) => (
           <ContactListItem data-testid="contactItem" key={`contactItem-${name}`}>

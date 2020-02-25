@@ -63,7 +63,7 @@ const MenuList = styled.ul`
 `;
 
 const Menu = ({ current, items }: MenuProps) => (
-  <nav>
+  <nav aria-label="menu">
     <MenuList>
       {items.map(({ content, url }) =>
         current === content ? (
