@@ -1,3 +1,4 @@
+import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -12,10 +13,16 @@ interface ContactItemProps {
 }
 
 const ContactItem = ({ content, name, url }: ContactItemProps) => {
-  return (
-    <a title={name} data-testid="contactItemLink" href={url}>
+  const isExternal = /^https?:\/\//.test(url);
+
+  return isExternal ? (
+    <a data-testid="contactItemLink" href={url} title={name}>
       {content}
     </a>
+  ) : (
+    <Link to={url} title={name}>
+      {content}
+    </Link>
   );
 };
 

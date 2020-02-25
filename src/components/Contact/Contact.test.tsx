@@ -1,7 +1,15 @@
 import React from 'react';
-import { render, getByText } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import Contact from './Contact';
+
+jest.mock('gatsby', () => ({
+  Link: ({ to, children, title }: any) => (
+    <span data-testid="contactItemLink" data-to={to} data-title={title}>
+      {children}
+    </span>
+  ),
+}));
 
 describe('Contact', () => {
   it('should render provided items', () => {
@@ -18,10 +26,21 @@ describe('Contact', () => {
     });
   });
 
-  it('should render a link', () => {
-    const name = 'Item1';
-    const url = 'http://item1.com';
-    const items = [{ name, content: 'Item1', url }];
+  it('should render interal links', () => {
+    const name = 'internal';
+    const url = '/internal';
+    const items = [{ content: 'internal', name, url }];
+    const { getByTestId } = render(<Contact items={items} />);
+
+    const link = getByTestId('contactItemLink');
+    expect(link).toHaveAttribute('data-to', url);
+    expect(link).toHaveAttribute('data-title', name);
+  });
+
+  it('should render external links', () => {
+    const name = 'external';
+    const url = 'https://external.com';
+    const items = [{ content: 'external', name, url }];
     const { getByTestId } = render(<Contact items={items} />);
 
     const link = getByTestId('contactItemLink');
