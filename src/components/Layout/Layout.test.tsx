@@ -3,7 +3,7 @@ import React from 'react';
 import { withTheme } from 'styled-components';
 
 import Layout from './Layout';
-import { theme as expectedTheme } from './_styles';
+import { theme as expectedTheme } from '#lib/theme';
 
 describe('Layout', () => {
   let children;

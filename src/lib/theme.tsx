@@ -4,12 +4,12 @@ import { createGlobalStyle, ThemeProvider as StyledThemeProvider } from 'styled-
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ThemeSettings {}
 
-const theme = {
+export const theme = {
   colors: {
-    primary: '#9e0007',
+    primary: '#c84f68',
     secondary: '#08525e',
-    neutral: '#3c3c3c',
-    background: '#eaeaea',
+    neutral: '#313031',
+    background: '#edece6',
   },
   breakpoints: {
     sm: 576,
@@ -26,7 +26,18 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-family: "Helvetica Neue", sans-serif;
+
+      &::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border: 10px solid ${theme.colors.neutral};
+        border-left: none;
+      }
     }
 
     h1, h2, h3, h4 {

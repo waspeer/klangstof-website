@@ -2,11 +2,18 @@ import { HelmetProvider } from 'react-helmet-async';
 import React from 'react';
 import styled from 'styled-components';
 
+import Nav from '#components/Nav';
 import { GlobalStyle, ThemeProvider } from '#lib/theme';
 
 const Wrapper = styled.main`
-  max-width: 960px;
-  margin: 0 auto;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  bottom: 10px;
+  left: 10px;
+  padding-left: 20vw;
+  overflow-y: scroll;
+  overflow-x: hidden;
 `;
 
 interface Props {
@@ -18,6 +25,7 @@ const Layout = ({ children }: Props) => {
     <HelmetProvider>
       <ThemeProvider>
         <GlobalStyle />
+        <Nav />
         <Wrapper data-testid="layout-container">{children}</Wrapper>
       </ThemeProvider>
     </HelmetProvider>
