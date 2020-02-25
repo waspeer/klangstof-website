@@ -2,7 +2,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import React from 'react';
 import styled from 'styled-components';
 
-import Nav from '#components/Nav';
+import Menu from '#components/Menu';
 import { GlobalStyle, ThemeProvider } from '#lib/theme';
 
 const Wrapper = styled.main`
@@ -18,15 +18,22 @@ const Wrapper = styled.main`
 
 interface Props {
   children: JSX.Element | JSX.Element[];
+  currentPage: string;
 }
 
-const Layout = ({ children }: Props) => {
+const menuItems = [
+  { content: 'TOUR', url: '/tour' },
+  { content: 'STORE', url: 'https://store.klangstof.com' },
+  { content: 'MUSIC', url: '/music' },
+];
+
+const Layout = ({ children, currentPage }: Props) => {
   return (
     <HelmetProvider>
       <ThemeProvider>
         <GlobalStyle />
-        <Nav />
         <Wrapper data-testid="layout-container">{children}</Wrapper>
+        <Menu items={menuItems} current={currentPage} />
       </ThemeProvider>
     </HelmetProvider>
   );

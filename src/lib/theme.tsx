@@ -42,7 +42,15 @@ export const GlobalStyle = createGlobalStyle`
 
     h1, h2, h3, h4 {
       color: ${theme.colors.primary};
-      font-family: 'Courier New', Courier, monospace;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    * {
+      box-sizing: border-box;
     }
   `;
 
