@@ -11,7 +11,7 @@ collections:
     files:
       - name: menuItems
         label: Menu Items
-        file: src/content/menuItems.yml
+        file: src/content/general/menuItems.yml
         fields:
           - name: items
             label: Items

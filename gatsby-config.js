@@ -13,8 +13,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'images',
-        path: `${__dirname}/src/images`,
+        name: 'content',
+        path: `${__dirname}/src/content`,
       },
     },
     'gatsby-transformer-sharp',
@@ -46,5 +46,6 @@ module.exports = {
     // `gatsby-plugin-offline`,
     'gatsby-plugin-styled-components',
     'gatsby-plugin-netlify-cms',
+    'gatsby-transformer-yaml',
   ],
 };
