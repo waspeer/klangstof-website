@@ -24,7 +24,6 @@ collections:
     label: Music
     folder: src/content/music
     create: true
-    extension: yml
     fields:
       - { name: 'title', label: 'Title' }
       - { name: 'image', label: 'Image', widget: 'image' }
