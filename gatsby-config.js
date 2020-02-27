@@ -17,6 +17,13 @@ module.exports = {
         path: `${__dirname}/src/content`,
       },
     },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: `${__dirname}/static/assets`,
+      },
+    },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {
@@ -46,6 +53,18 @@ module.exports = {
     // `gatsby-plugin-offline`,
     'gatsby-plugin-styled-components',
     'gatsby-plugin-netlify-cms',
-    'gatsby-transformer-yaml',
+    'gatsby-plugin-netlify-cms-paths',
+    {
+      resolve: 'gatsby-transformer-remark',
+      plugins: [
+        'gatsby-remark-relative-images',
+        {
+          resolve: 'gatsby-remark-images',
+          options: {
+            maxWidth: 1000,
+          },
+        },
+      ],
+    },
   ],
 };

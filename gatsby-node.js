@@ -4,24 +4,33 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-// You can delete this file if you're not using it
+const { fmImagesToRelative } = require('gatsby-remark-relative-images');
+
+exports.onCreateNode = ({ node }) => {
+  fmImagesToRelative(node);
+};
+
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
 
   const typeDefs = `
-    type MusicYamlLinks {
+    type MarkdownRemarkFrontmatterLinks {
       platform: String!
       url: String!
     }
 
-    type MusicYaml implements Node {
-      id: ID!
-      image: String!
-      date: Date!
+    type MarkdownRemarkFrontmatter {
+      date: String!
       description: String!
       title: String!
       type: String!
-      links: [MusicYamlLinks]!
+      links: [MarkdownRemarkFrontmatterLinks!]!
+      image: File!
+    }
+
+    type MarkdownRemark implements Node {
+      id: ID!
+      frontmatter: MarkdownRemarkFrontmatter!
     }
   `;
 
