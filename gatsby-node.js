@@ -25,7 +25,6 @@ exports.createSchemaCustomization = ({ actions }) => {
       title: String!
       type: String!
       links: [MarkdownRemarkFrontmatterLinks!]!
-      image: File!
     }
 
     type MarkdownRemark implements Node {
