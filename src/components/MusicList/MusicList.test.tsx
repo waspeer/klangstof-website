@@ -3,9 +3,12 @@ import { render } from '@testing-library/react';
 
 import factories from '#test/jest/factories';
 
-import MusicList from './MusicList';
+import MusicList, { Release } from './MusicList';
 
 jest.mock('gatsby-image', () => () => <span data-testid="image" />);
+jest.mock('@fortawesome/react-fontawesome', () => ({
+  FontAwesomeIcon: () => <span data-testid="icon" />,
+}));
 
 describe('MusicList', () => {
   it('should render the provided releases', () => {
@@ -15,11 +18,30 @@ describe('MusicList', () => {
 
     expect(getAllByTestId('release').length).toBe(postAmount);
     releases.forEach((release) => {
-      const yearString = String(new Date(release.date).getFullYear());
       expect(getByText(release.title)).toBeInTheDocument();
-      expect(getByText(yearString)).toBeInTheDocument();
-      expect(getByText(release.description)).toBeInTheDocument();
-      expect(getAllByTestId('image').length).toBe(postAmount);
+    });
+  });
+});
+
+describe('Release', () => {
+  it('should render the provided data', () => {
+    const release = factories.music.build();
+    const yearString = String(new Date(release.date).getFullYear());
+
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    const { getByTestId, getByText } = render(<Release {...release} />);
+
+    expect(getByText(release.title)).toBeInTheDocument();
+    expect(getByText(yearString)).toBeInTheDocument();
+    expect(getByText(release.description)).toBeInTheDocument();
+    expect(getByTestId('image')).toBeInTheDocument();
+    expect(getByText(release.type)).toBeInTheDocument();
+
+    release.links.forEach(({ platform, url }) => {
+      const linkElement = getByTestId(`releaseLink-${platform}`);
+
+      expect(linkElement).toBeInTheDocument();
+      expect(linkElement).toHaveAttribute('href', url);
     });
   });
 });
