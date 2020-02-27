@@ -7,6 +7,7 @@ module.exports = {
       { devDependencies: ['**/*.test.tsx', 'test/**/*'] },
     ],
     quotes: ['error', 'single', { avoidEscape: true, allowTemplateLiterals: false }],
+    '@typescript-eslint/no-explicit-any': 'off',
   },
   settings: {
     'import/resolver': {
