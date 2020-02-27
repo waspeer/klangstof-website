@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+import Image, { FluidObject } from 'gatsby-image';
 import React from 'react';
 import styled from 'styled-components';
 
-import { Music_allMusicYaml_edges as AllMusicYaml } from '#lib/types/__generated__/Music';
+import ReleaseDTO from '#lib/types/Release';
 
-type ReleaseProps = Pick<AllMusicYaml['node'], 'date' | 'description' | 'image' | 'title'>;
+type ReleaseProps = Pick<ReleaseDTO, 'date' | 'description' | 'image' | 'title'>;
 
 const Front = styled.div``;
 
@@ -17,12 +19,15 @@ const Year = styled.small``;
 
 const Description = styled.p``;
 
-const Release = ({ date, description, title }: ReleaseProps) => {
+const Release = ({ date, description, image, title }: ReleaseProps) => {
+  const imageFluid = image.childImageSharp?.fluid as FluidObject;
   const year = new Date(date).getFullYear();
 
   return (
     <div data-testid="release">
-      <Front />
+      <Front>
+        <Image fluid={imageFluid} />
+      </Front>
       <Back>
         <BackButton />
         <Title>{title}</Title>
@@ -34,13 +39,13 @@ const Release = ({ date, description, title }: ReleaseProps) => {
 };
 
 interface MusicListProps {
-  releases: AllMusicYaml[];
+  releases: ReleaseDTO[];
 }
 
 const MusicList = ({ releases }: MusicListProps) => {
   return (
     <ul>
-      {releases.map(({ node: { id, date, description, image, title } }) => (
+      {releases.map(({ id, date, description, image, title }) => (
         <li key={id}>
           <Release date={date} description={description} image={image} title={title} />
         </li>
