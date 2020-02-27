@@ -49,7 +49,7 @@ const Photo = styled.div`
   left: 20vw;
 `;
 
-const Logo = styled.div`
+const Logo = styled.h1`
   position: absolute;
   bottom: 27vh;
   left: 18vw;
@@ -58,10 +58,6 @@ const Logo = styled.div`
   font-weight: bold;
   color: white;
   font-size: 10vw;
-
-  &:after {
-    content: 'KLANGSTOF';
-  }
 
   @media (orientation: portrait) {
     top: 55vh;
@@ -95,7 +91,7 @@ const Collage = () => {
         <Photo />
       </Layer>
       <Layer data-depth="0.3">
-        <Logo />
+        <Logo>KLANGSTOF</Logo>
       </Layer>
       <Layer data-depth="0.5">
         <Overlay />
