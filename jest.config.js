@@ -12,6 +12,7 @@ module.exports = {
     //   '<rootDir>/test/jest/mocks/file-mocks.js',
     '^#components/(.*)$': '<rootDir>/src/components/$1',
     '^#lib/(.*)$': '<rootDir>/src/lib/$1',
+    '^#test/(.*)$': '<rootDir>/test/$1',
   },
   testPathIgnorePatterns: ['node_modules', '.cache', 'public'],
   transformIgnorePatterns: ['node_modules/(?!(gatsby)/)'],
