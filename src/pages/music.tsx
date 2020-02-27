@@ -2,6 +2,7 @@ import { graphql } from 'gatsby';
 import React from 'react';
 
 import Layout from '#components/Layout';
+import MusicList from '#components/MusicList';
 import SEO from '#components/Seo';
 import { Music } from '#lib/types/__generated__/Music';
 
@@ -10,11 +11,12 @@ interface Props {
 }
 
 const IndexPage = ({ data }: Props) => {
-  console.log(data);
+  const releases = data.allMusicYaml.edges;
 
   return (
     <Layout currentPage="MUSIC">
       <SEO title="music" />
+      <MusicList releases={releases} />
     </Layout>
   );
 };
