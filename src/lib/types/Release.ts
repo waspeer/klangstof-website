@@ -6,6 +6,7 @@ interface ReleaseLink {
 }
 
 export default interface Release {
+  id: string;
   date: string;
   description: string;
   title: string;
