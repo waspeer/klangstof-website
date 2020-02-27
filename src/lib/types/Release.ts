@@ -9,8 +9,8 @@ export default interface Release {
   id: string;
   date: string;
   description: string;
+  image: ReleaseImage;
+  links: ReleaseLink[];
   title: string;
   type: string;
-  links: ReleaseLink[];
-  image: ReleaseImage;
 }
