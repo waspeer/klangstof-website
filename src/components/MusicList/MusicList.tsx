@@ -1,10 +1,9 @@
-import { useStaticQuery, graphql } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 
 import { Music_allMusicYaml_edges as AllMusicYaml } from '#lib/types/__generated__/Music';
 
-type ReleaseProps = Partial<AllMusicYaml['node']>; // TODO remove partial type
+type ReleaseProps = Pick<AllMusicYaml['node'], 'date' | 'description' | 'image' | 'title'>;
 
 const Front = styled.div``;
 
@@ -18,10 +17,8 @@ const Year = styled.small``;
 
 const Description = styled.p``;
 
-const Release = ({ date, description, image, title }: ReleaseProps) => {
+const Release = ({ date, description, title }: ReleaseProps) => {
   const year = new Date(date).getFullYear();
-
-  console.log(image);
 
   return (
     <div data-testid="release">
