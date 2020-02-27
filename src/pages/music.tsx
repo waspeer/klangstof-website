@@ -5,13 +5,26 @@ import Layout from '#components/Layout';
 import MusicList from '#components/MusicList';
 import SEO from '#components/Seo';
 import { Music } from '#lib/types/__generated__/Music';
+import Release from '#lib/types/Release';
 
 interface Props {
   data: Music;
 }
 
+function normalizeMusicData(data: Music): Release[] {
+  return data.allMarkdownRemark.edges.map(({ node: release }) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { __typename, ...frontmatter } = release.frontmatter;
+
+    return {
+      id: release.id,
+      ...frontmatter,
+    };
+  });
+}
+
 const IndexPage = ({ data }: Props) => {
-  const releases = data.allMusicYaml.edges;
+  const releases = normalizeMusicData(data);
 
   return (
     <Layout currentPage="MUSIC">
@@ -23,19 +36,27 @@ const IndexPage = ({ data }: Props) => {
 
 export const query = graphql`
   query Music {
-    allMusicYaml {
+    allMarkdownRemark {
       edges {
         node {
           id
-          links {
-            platform
-            url
+          frontmatter {
+            date
+            description
+            title
+            type
+            links {
+              platform
+              url
+            }
+            image {
+              childImageSharp {
+                fluid(maxWidth: 1000) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
           }
-          date
-          description
-          image
-          title
-          type
         }
       }
     }
