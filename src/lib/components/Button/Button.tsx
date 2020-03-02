@@ -51,6 +51,11 @@ interface Props {
   size?: 'large' | 'small';
 
   /**
+   * Sets the testId on the button
+   */
+  testId?: string;
+
+  /**
    * Sets the type of the button
    */
   type?: 'primary' | 'link';
@@ -68,6 +73,7 @@ const Button = ({
   loading = false,
   onClick,
   size,
+  testId,
   type,
 }: Props) => {
   const classes = classNames({
@@ -90,7 +96,7 @@ const Button = ({
     return (
       <StyledLink
         className={classes}
-        data-testid={TEST_ID}
+        data-testid={testId || TEST_ID}
         href={disabled || loading ? undefined : href}
         onClick={disabled || loading ? undefined : onClick}
       >
@@ -102,7 +108,7 @@ const Button = ({
   return (
     <StyledButton
       className={classes}
-      data-testid={TEST_ID}
+      data-testid={testId || TEST_ID}
       disabled={disabled || loading}
       onClick={onClick}
       type={htmlType}

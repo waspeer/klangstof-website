@@ -78,6 +78,12 @@ describe('Button default', () => {
     const { getByTestId } = render(<Button block />);
     expect(getByTestId(TEST_ID)).toHaveStyle({ width: '100%' });
   });
+
+  it('should render with the provided testid', () => {
+    const testId = 'wisdom';
+    const { getByTestId } = render(<Button testId={testId} />);
+    expect(getByTestId(testId)).toBeInTheDocument();
+  });
 });
 
 describe('Button[type=link]', () => {
@@ -116,5 +122,11 @@ describe('Button[type=link]', () => {
     fireEvent.click(getByTestId(TEST_ID));
     expect(handler).not.toHaveBeenCalled();
     expect(getByTestId(TEST_ID)).toHaveClass('loading');
+  });
+
+  it('should render with the provided testid', () => {
+    const testId = 'wisdom';
+    const { getByTestId } = render(<Button testId={testId} type="link" />);
+    expect(getByTestId(testId)).toBeInTheDocument();
   });
 });
