@@ -3,7 +3,8 @@ import React from 'react';
 
 import List from './List';
 
-const TEST_ID = 'list';
+const LIST_TEST_ID = 'list';
+const EMPTY_TEST_ID = 'noItems';
 
 describe('List', () => {
   it('should render provided items', () => {
@@ -14,7 +15,8 @@ describe('List', () => {
 
   it('should render without items', () => {
     const { getByTestId } = render(<List />);
-    expect(getByTestId(TEST_ID)).toBeInTheDocument();
+    expect(getByTestId(LIST_TEST_ID)).toBeInTheDocument();
+    expect(getByTestId(EMPTY_TEST_ID)).toBeInTheDocument();
   });
 
   it('should render the data with the renderItem function when provided', () => {
@@ -38,27 +40,27 @@ describe('List', () => {
 
   it('should render a bordered list when provided with the bordered prop', () => {
     const { getByTestId } = render(<List bordered />);
-    expect(getByTestId(TEST_ID)).toHaveClass('bordered');
+    expect(getByTestId(LIST_TEST_ID)).toHaveClass('bordered');
   });
 
   it('should render a small list when provided with the small prop', () => {
     const { getByTestId } = render(<List small />);
-    expect(getByTestId(TEST_ID)).toHaveClass('small');
+    expect(getByTestId(LIST_TEST_ID)).toHaveClass('small');
   });
 
   it('should render a large list when provided with the large prop', () => {
     const { getByTestId } = render(<List large />);
-    expect(getByTestId(TEST_ID)).toHaveClass('large');
+    expect(getByTestId(LIST_TEST_ID)).toHaveClass('large');
   });
 
-  it('should render a split list when provided with the split prop', () => {
-    const { getByTestId } = render(<List split />);
-    expect(getByTestId(TEST_ID)).toHaveClass('split');
+  it('should not render a split list split prop is false', () => {
+    const { getByTestId } = render(<List split={false} />);
+    expect(getByTestId(LIST_TEST_ID)).not.toHaveClass('split');
   });
 
   it('should render a loading state when provided with the loading prop', () => {
     const { getByTestId } = render(<List loading />);
-    expect(getByTestId(TEST_ID)).toHaveClass('loading');
+    expect(getByTestId(LIST_TEST_ID)).toHaveClass('loading');
   });
 
   it('should render a footer element when provided', () => {

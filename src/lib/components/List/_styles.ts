@@ -124,3 +124,15 @@ export const ListWrapper = styled.div`
     }
   }
 `;
+
+export const NoItemsWrapper = styled.div`
+  text-align: center;
+  padding: 1rem;
+  opacity: 0.75;
+
+  span {
+    display: block;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+`;
