@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 import { theme } from '#lib/theme';
 
@@ -27,22 +27,14 @@ export const Spinner = styled.div`
   width: 1em;
 `;
 
-export const StyledButton = styled.button`
-  background-color: transparent;
-  border-color: grey;
-  border-radius: 0.2rem;
-  border-style: solid;
-  border-width: 1px;
-  color: grey;
+const buttonStyle = css`
   cursor: pointer;
   display: inline-block;
-  font-style: italic;
-  font-weight: bold;
-  overflow: hidden;
   padding: 0.3rem 1rem;
   position: relative;
-  text-transform: lowercase;
+  touch-action: manipulation;
   transition: all 0.2s;
+  user-select: none;
 
   &::before {
     content: '';
@@ -53,22 +45,6 @@ export const StyledButton = styled.button`
     left: -1px;
     background-color: rgba(255, 255, 255, 0);
     transition: background-color 0.2s;
-  }
-
-  &:active {
-    &::before {
-      background-color: rgba(0, 0, 0, 0.1);
-    }
-  }
-
-  &:hover {
-    background-color: ${theme.colors.background};
-    border-color: ${theme.colors.primary};
-    color: ${theme.colors.primary};
-
-    &::before {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
   }
 
   &.block {
@@ -97,6 +73,42 @@ export const StyledButton = styled.button`
     }
   }
 
+  &.small {
+    padding: 0.15rem 0.25rem;
+  }
+
+  span {
+    position: relative;
+  }
+`;
+
+export const StyledButton = styled.button`
+  background-color: transparent;
+  border-color: grey;
+  border-radius: 0.2rem;
+  border-style: solid;
+  border-width: 1px;
+  color: grey;
+  font-style: italic;
+  font-weight: bold;
+  overflow: hidden;
+
+  &:hover {
+    background-color: ${theme.colors.background};
+    border-color: ${theme.colors.primary};
+    color: ${theme.colors.primary};
+
+    &::before {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  &:active {
+    &::before {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+
   &.primary {
     background-color: ${theme.colors.primary};
     border-color: ${theme.colors.neutral};
@@ -106,10 +118,6 @@ export const StyledButton = styled.button`
       border-color: ${theme.colors.background};
       color: ${theme.colors.background};
     }
-  }
-
-  &.small {
-    padding: 0.15rem 0.25rem;
   }
 
   &:disabled {
@@ -129,7 +137,28 @@ export const StyledButton = styled.button`
     }
   }
 
-  span {
-    position: relative;
+  ${buttonStyle}
+`;
+
+export const StyledLink = styled.a`
+  color: ${theme.colors.primary};
+
+  &:hover {
+    filter: brightness(120%);
   }
+
+  &:active {
+    filter: brightness(80%);
+  }
+
+  &.disabled {
+    color: grey;
+    cursor: not-allowed;
+
+    &:hover {
+      filter: none;
+    }
+  }
+
+  ${buttonStyle}
 `;

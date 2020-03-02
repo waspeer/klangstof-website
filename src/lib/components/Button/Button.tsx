@@ -1,7 +1,7 @@
 import classNames from '@sindresorhus/class-names';
 import React from 'react';
 
-import { Spinner, StyledButton, IconWrapper } from './_styles';
+import { Spinner, StyledButton, IconWrapper, StyledLink } from './_styles';
 
 interface Props {
   /**
@@ -20,6 +20,11 @@ interface Props {
   disabled?: boolean;
 
   /**
+   * Sets the href attribute of the link button.
+   */
+  href?: string;
+
+  /**
    * Passed to the button's `type` attribute.
    * See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type
    */
@@ -29,11 +34,6 @@ interface Props {
    * Renders an icon to the left of the button children.
    */
   icon?: React.ReactNode;
-
-  /**
-   * Renders a large icon.
-   */
-  large?: boolean;
 
   /**
    * Disables the button and shows a spinner.
@@ -46,41 +46,68 @@ interface Props {
   onClick?: (...params: any[]) => any;
 
   /**
-   * Sets the color scheme to primary.
+   * Sets the size of the button
    */
-  primary?: boolean;
+  size?: 'large' | 'small';
 
   /**
-   * Renders a small button.
+   * Sets the type of the button
    */
-  small?: boolean;
+  type?: 'primary' | 'link';
 }
+
+const TEST_ID = 'button';
 
 const Button = ({
   block,
   children,
   disabled = false,
+  href,
   htmlType = 'button',
   icon,
-  large,
   loading = false,
   onClick,
-  primary,
-  small,
+  size,
+  type,
 }: Props) => {
-  const iconOrNull = loading ? <Spinner /> : icon || null;
-  const classes = classNames({ block, large, loading, primary, small });
+  const classes = classNames({
+    block,
+    disabled: type === 'link' && disabled,
+    large: size === 'large',
+    loading,
+    primary: type === 'primary',
+    small: size === 'small',
+  });
+
+  const buttonContent = (
+    <>
+      {(loading || icon) && <IconWrapper>{loading ? <Spinner /> : icon}</IconWrapper>}
+      <span>{children}</span>
+    </>
+  );
+
+  if (type === 'link') {
+    return (
+      <StyledLink
+        className={classes}
+        data-testid={TEST_ID}
+        href={disabled || loading ? undefined : href}
+        onClick={disabled || loading ? undefined : onClick}
+      >
+        {buttonContent}
+      </StyledLink>
+    );
+  }
 
   return (
     <StyledButton
       className={classes}
-      data-testid="button"
+      data-testid={TEST_ID}
       disabled={disabled || loading}
       onClick={onClick}
       type={htmlType}
     >
-      {iconOrNull && <IconWrapper>{iconOrNull}</IconWrapper>}
-      <span>{children}</span>
+      {buttonContent}
     </StyledButton>
   );
 };
