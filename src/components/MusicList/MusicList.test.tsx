@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import factories from '#test/jest/factories';
 
@@ -23,6 +23,8 @@ describe('MusicList', () => {
   });
 });
 
+const RELEASE_TEST_ID = 'release';
+
 describe('Release', () => {
   it('should render the provided data', () => {
     const release = factories.music.build();
@@ -43,5 +45,17 @@ describe('Release', () => {
       expect(linkElement).toBeInTheDocument();
       expect(linkElement).toHaveAttribute('href', url);
     });
+  });
+
+  it('should flip around when clicked', () => {
+    const releaseData = factories.music.build();
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    const { getByTestId } = render(<Release {...releaseData} />);
+    const release = getByTestId(RELEASE_TEST_ID);
+    expect(release).toHaveStyle('transform: rotateY(0deg)');
+    fireEvent.click(getByTestId('releaseFlipToggleFront'));
+    expect(release).toHaveStyle('transform: rotateY(180deg)');
+    fireEvent.click(getByTestId('releaseFlipToggleBack'));
+    expect(release).toHaveStyle('transform: rotateY(0deg)');
   });
 });
