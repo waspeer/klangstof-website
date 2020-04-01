@@ -12,6 +12,15 @@ This is a website for the band Klangstof, build with Gatsby. It's currently stil
 yarn develop
 ```
 
+## Todo
+
+-   [ ] Test music list for non-square images
+-   [ ] Hide scroll triggers when end is reached
+-   [ ] Write e2e tests for home and music list
+-   [ ] Make contact/404 page
+-   [ ] Add menu and social links to cms
+-   [ ] Write CI/CD pipeline
+
 ## License
 
 MIT © Wannes Salomé
