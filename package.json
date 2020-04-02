@@ -28,7 +28,7 @@
     "gatsby-transformer-remark": "^2.7.1",
     "gatsby-transformer-sharp": "^2.4.3",
     "graphql": "^14.6.0",
-    "netlify-cms-app": "^2.12.1",
+    "netlify-cms-app": "^2.12.3",
     "normalize.css": "^8.0.1",
     "parallax-js": "^3.1.0",
     "react": "^16.13.1",
