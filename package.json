@@ -62,7 +62,7 @@
     "fishery": "^0.3.0",
     "jest": "^25.2.7",
     "poetic": "^1.5.0",
-    "prettier": "^2.0.2",
+    "prettier": "^2.0.3",
     "start-server-and-test": "^1.10.11",
     "stylelint": "^13.2.1",
     "stylelint-config-recommended": "^3.0.0",
