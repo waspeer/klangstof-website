@@ -33,7 +33,7 @@
     "parallax-js": "^3.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-helmet-async": "^1.0.4",
+    "react-helmet-async": "^1.0.5",
     "react-is": "^16.13.1",
     "styled-components": "^5.1.0"
   },
