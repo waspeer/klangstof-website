@@ -1,0 +1,30 @@
+{
+  "root": true,
+  "project": {
+    "name": "Klangstof"
+  },
+  "api": {
+    "projectId": "0mwtkc4q",
+    "dataset": "production"
+  },
+  "plugins": [
+    "@sanity/base",
+    "@sanity/default-layout",
+    "@sanity/default-login",
+    "@sanity/desk-tool",
+    "icon-picker"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "@sanity/vision"
+      ]
+    }
+  },
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./src/schema"
+    }
+  ]
+}
