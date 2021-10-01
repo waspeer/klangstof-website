@@ -5,7 +5,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "start": "sanity start",
+    "dev": "sanity start",
     "build": "sanity build"
   },
   "keywords": [],
