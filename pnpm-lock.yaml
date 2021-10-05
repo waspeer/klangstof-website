@@ -48,7 +48,6 @@ importers:
   web:
     specifiers:
       '@sanity/image-url': ^1.0.1
-      '@tsconfig/node14': ^1.0.1
       astro: ^0.20.8
       mem: ^9.0.1
       modern-css-reset: ^1.4.0
@@ -65,7 +64,6 @@ importers:
       node-fetch: 3.0.0
       parallax-js: 3.1.0
     devDependencies:
-      '@tsconfig/node14': 1.0.1
       astro: 0.20.8
       react: 17.0.2
       stylelint: 13.13.1
@@ -3623,10 +3621,6 @@ packages:
   /@tootallnate/once/1.1.2:
     resolution: {integrity: sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==}
     engines: {node: '>= 6'}
-    dev: true
-
-  /@tsconfig/node14/1.0.1:
-    resolution: {integrity: sha512-509r2+yARFfHHE7T6Puu2jjkoycftovhXRqW328PDXTVGKihlb1P8Z9mMZH04ebyajfRY7dedfGynlrFHJUQCg==}
     dev: true
 
   /@types/acorn/4.0.6:

@@ -1,19 +1,11 @@
 {
-  "name": "@example/starter",
+  "name": "klangstof-website",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
     "build": "astro build",
+    "dev": "astro dev",
     "preview": "astro preview"
-  },
-  "devDependencies": {
-    "astro": "^0.20.8",
-    "react": "^17.0",
-    "stylelint": "^13.13.1",
-    "stylelint-config-idiomatic-order": "^8.1.0",
-    "stylelint-config-sass-guidelines": "^8.0.0"
   },
   "dependencies": {
     "@sanity/image-url": "^1.0.1",
@@ -21,5 +13,12 @@
     "modern-css-reset": "^1.4.0",
     "node-fetch": "^3.0.0",
     "parallax-js": "^3.1.0"
+  },
+  "devDependencies": {
+    "astro": "^0.20.8",
+    "react": "^17.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-idiomatic-order": "^8.1.0",
+    "stylelint-config-sass-guidelines": "^8.0.0"
   }
 }
