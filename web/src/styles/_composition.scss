@@ -1,0 +1,39 @@
+@use 'tokens';
+
+// CONTAINER
+// ---------
+
+.container {
+  width: 90vw;
+  width: clamp(16rem, 90vw, 70rem);
+  margin-inline: auto;
+}
+
+// CLUSTER
+// -------
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--cluster-gap, 1rem);
+}
+
+// FLOW
+// ----
+
+.flow {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.flow > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.flow > * + * {
+  margin-top: var(--flow-gap, 1rem);
+}

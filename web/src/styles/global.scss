@@ -1,0 +1,78 @@
+@use 'modern-css-reset/dist/reset.min.css';
+@use 'composition';
+@use 'utilities';
+
+html {
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.5;
+
+  @media (min-width: 48em) {
+    font-size: var(--s-500);
+  }
+}
+
+body {
+  position: relative;
+  padding: var(--s-300);
+
+  &::before {
+    position: absolute;
+    border: var(--s-300) solid var(--color-text);
+    content: '';
+    inset: 0;
+  }
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-rose-200);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: var(--s-700);
+}
+
+h2 {
+  font-size: var(--s-600);
+}
+
+h3 {
+  font-size: var(--s-500);
+}
+
+h4,
+h5 {
+  font-size: var(--s-400);
+}
+
+p,
+li {
+  max-width: 60ch;
+}
+
+h1 {
+  max-width: 20ch;
+}
+
+h2,
+h3 {
+  max-width: 25ch;
+}
+
+::selection {
+  background-color: var(--color-text);
+  color: var(--color-bg);
+}
+

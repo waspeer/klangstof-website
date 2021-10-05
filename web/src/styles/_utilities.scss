@@ -1,0 +1,154 @@
+@use 'sass:color';
+@use 'sass:list';
+@use 'tokens';
+
+$variables: ();
+@mixin add-variable($name, $value) {
+  $variables: list.append($variables, ($name, $value)) !global;
+}
+
+// BOX SHADOW
+@each $variant, $value in tokens.$shadows {
+  .bs-#{$variant} {
+    box-shadow: #{$value};
+  }
+}
+
+// COLORS
+@each $name, $variants in tokens.$colors {
+  @each $variant, $value in $variants {
+    @include add-variable('#{$name}-#{$variant}', $value);
+    .tc-#{$name}-#{$variant} {
+      color: rgba(color.red($value), color.green($value), color.blue($value), var(--text-opacity, 1));
+    }
+    .bg-#{$name}-#{$variant} {
+      background-color: rgba(color.red($value), color.green($value), color.blue($value), var(--bg-opacity, 1));
+    }
+  }
+}
+
+@include add-variable('color-bg', tokens.$color-bg);
+@include add-variable('color-text', tokens.$color-text);
+@include add-variable('color-shadow', tokens.$color-shadow);
+
+// SIZES / MARGIN / PADDING
+@each $name, $value in tokens.$size-scale {
+  @include add-variable('s-#{$name}', $value);
+
+  .m-#{$name} { margin: $value; }
+  .my-#{$name} {
+    margin-top: $value;
+    margin-bottom: $value;
+  }
+  .mx-#{$name} {
+    margin-right: $value;
+    margin-left: $value;
+  }
+  .mt-#{$name} { margin-top: $value; }
+  .mr-#{$name} { margin-right: $value; }
+  .mb-#{$name} { margin-bottom: $value; }
+  .ml-#{$name} { margin-left: $value; }
+
+  .p-#{$name} { padding: $value; }
+  .py-#{$name} {
+    padding-top: $value;
+    padding-bottom: $value;
+  }
+  .px-#{$name} {
+    padding-right: $value;
+    padding-left: $value;
+  }
+  .pt-#{$name} { padding-top: $value; }
+  .pr-#{$name} { padding-right: $value; }
+  .pb-#{$name} { padding-bottom: $value; }
+  .pl-#{$name} { padding-left: $value; }
+}
+
+// FONT / TEXT
+@each $name, $value in tokens.$fonts {
+  @include add-variable('font-#{$name}', $value);
+  .font-#{$name} { font-family: #{$value}; }
+}
+
+@each $name, $value in tokens.$size-scale {
+  .fs-#{$name} { font-size: $value; };
+}
+
+.fw-100 { font-weight: 100; }
+.fw-200 { font-weight: 200; }
+.fw-300 { font-weight: 300; }
+.fw-400 { font-weight: 400; }
+.fw-500 { font-weight: 500; }
+.fw-600 { font-weight: 600; }
+.fw-700 { font-weight: 700; }
+.fw-800 { font-weight: 800; }
+.fw-900 { font-weight: 900; }
+
+.ta-c { text-align: center; }
+.ta-r { text-align: right; }
+.ta-l { text-align: left; }
+.ta-j { text-align: justify; }
+.td-n { text-decoration: none; }
+.td-u { text-decoration: underline; }
+.tt-n { text-transform: none; }
+.tt-u { text-transform: uppercase; }
+.tt-l { text-transform: lowercase; }
+
+.lh-none { line-height: 1; }
+.lh-tight { line-height: 1.25; }
+.lh-snug { line-height: 1.375; }
+.lh-normal { line-height: 1.5; }
+.lh-relaxed { line-height: 1.625; }
+.lh-loose { line-height: 2; }
+
+// BORDER RADIUS
+
+@each $variant, $value in tokens.$radius {
+  @include add-variable('radius-#{$variant}', $value);
+  .br-#{$variant} {
+    border-radius: #{$value};
+  }
+}
+
+// CLICK AREA
+.click-area {
+  position: relative;
+}
+
+.click-area a {
+  cursor: pointer;
+
+  &::after {
+    position: absolute;
+    content: '';
+    inset: 0;
+  }
+}
+
+// LISTS
+.ls-n {
+  padding: initial;
+  margin: initial;
+  list-style: none;
+}
+
+// VISUALLY HIDDEN
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: auto;
+  padding: 0;
+  border: 0;
+  margin: 0;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+
+// CSS VARIABLES
+:root {
+  @each $name, $value in $variables {
+    --#{$name}: #{$value};
+  }
+}

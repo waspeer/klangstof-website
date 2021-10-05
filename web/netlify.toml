@@ -1,0 +1,10 @@
+[build]
+  command = "npx pnpm i && npx pnpm build"
+  ignore = "git diff --quiet HEAD^ HEAD ."
+  publish = "dist"
+
+[build.environment]
+  NPM_FLAGS = "--prefix=/dev/null"
+
+[dev]
+  command = "pnpm dev"

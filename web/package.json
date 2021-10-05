@@ -9,6 +9,14 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "astro": "^0.20.8"
+    "astro": "^0.20.8",
+    "react": "^17.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-idiomatic-order": "^8.1.0",
+    "stylelint-config-sass-guidelines": "^8.0.0"
+  },
+  "dependencies": {
+    "modern-css-reset": "^1.4.0",
+    "parallax-js": "^3.1.0"
   }
 }
