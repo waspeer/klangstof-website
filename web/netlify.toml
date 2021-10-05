@@ -4,7 +4,7 @@
   publish = "dist"
 
 [build.environment]
-  NPM_FLAGS = "--prefix=/"
+  NPM_FLAGS = "--version"
 
 [dev]
   command = "pnpm dev"
