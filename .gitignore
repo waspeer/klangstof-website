@@ -120,3 +120,5 @@ dist
 web-old
 # Local Netlify folder
 .netlify
+package-lock.json
+yarn.lock
