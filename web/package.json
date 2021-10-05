@@ -16,7 +16,10 @@
     "stylelint-config-sass-guidelines": "^8.0.0"
   },
   "dependencies": {
+    "@sanity/image-url": "^1.0.1",
+    "mem": "^9.0.1",
     "modern-css-reset": "^1.4.0",
+    "node-fetch": "^3.0.0",
     "parallax-js": "^3.1.0"
   }
 }

@@ -1,5 +1,14 @@
 ---
+import * as sanity from '../lib/sanity.js';
 
+const {photo} = await sanity.query(/* groq */ `
+  *[_id == 'general'][0] {
+    photo {
+      ...
+    }
+  }
+`);
+const photoUrl = sanity.imageUrl(photo).width(1200).auto('format').url()!;
 ---
 
 <section class="wrapper collage">
@@ -7,7 +16,7 @@
     <div class="shadow" />
   </div>
   <div class="layer" data-depth="0.2">
-    <div class="photo" />
+    <div class="photo" style={`background-image: url('${photoUrl}');`} />
   </div>
   <div class="layer" data-depth="0.3">
     <h1 class="logo">KLANGSTOF</h1>

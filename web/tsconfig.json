@@ -1,3 +1,7 @@
 {
-  "moduleResolution": "node"
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+  },
 }
