@@ -1,6 +1,14 @@
 ---
 import Layout from '../components/layout.astro';
-import Collage from '../components/collage.astro'
+import Slices from '../components/slices.astro';
+import * as sanity from '../lib/sanity.js';
+import { Page } from '../lib/types.js';
+
+const page = await sanity.query<Page>(/* groq */ `
+    *[_id == 'home'][0] {
+        ${sanity.fragments.page}
+    }
+`);
 ---
 
 <head>
@@ -8,7 +16,7 @@ import Collage from '../components/collage.astro'
 </head>
 
 <Layout title="Klangstof">
-    <Collage />
+    <Slices slices={page.slices} />
 </Layout>
 
 <script type="module">

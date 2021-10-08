@@ -3,6 +3,8 @@ import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import mem from 'mem';
 import * as fetch from 'node-fetch';
 
+import { SliceType } from './types';
+
 const projectId = import.meta.env.SNOWPACK_PUBLIC_SANITY_PROJECT;
 const dataset = import.meta.env.SNOWPACK_PUBLIC_SANITY_DATASET;
 const baseUrl = `https://${projectId}.api.sanity.io/v2021-09-03/data/query/${dataset}`;
@@ -10,8 +12,8 @@ const baseUrl = `https://${projectId}.api.sanity.io/v2021-09-03/data/query/${dat
 // FRAGMENTS
 // ---------
 
-const fragments = {
-  image: /* groq */ `
+const fragments = (() => {
+  const image = /* groq */ `
     alt,
     asset,
     caption,
@@ -21,8 +23,20 @@ const fragments = {
       "dimensions": metadata.dimensions,
       "dominantColor": metadata.palette.dominant.background,
     },
-  `,
-};
+  `;
+
+  const release = /* groq */ `
+    name,
+  `;
+
+  const page = /* groq */ `
+    slices[] {
+      type
+    }
+  `;
+
+  return { image, page, release };
+})();
 
 // IMAGE URL
 // ---------
@@ -48,7 +62,7 @@ const query = mem(
       });
     }
 
-    const result = await fetch(url.toString(), {
+    const result = await (fetch as unknown as typeof fetch.default)(url.toString(), {
       method: 'GET',
       // headers: {
       //   Authorization: `Bearer ${import.meta.env.SNOWPACK_PUBLIC_SANITY_TOKEN}`,

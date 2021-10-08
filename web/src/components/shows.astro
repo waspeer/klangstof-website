@@ -1,0 +1,25 @@
+---
+import * as sanity from '../lib/sanity.js';
+
+const data = await sanity.query(/* groq */ `
+  *[_id == 'general'][0] {
+    songkickUrl,
+  }
+`)
+
+const songkickUrl = data.songkickUrl as string;
+const artistId = songkickUrl.match(/(\d+)/)[0];
+---
+
+<section class="container">
+  <a 
+    href={`https://www.songkick.com/artists/${artistId}`}
+    class="songkick-widget" 
+    data-theme="light" 
+    data-track-button="off" 
+    data-detect-style="true" 
+    data-background-color="transparent" 
+    data-locale="en"
+  />
+  <script src={`//widget.songkick.com/${artistId}/widget.js`}></script>
+</section>

@@ -1,11 +1,13 @@
+import { BiWrench } from 'react-icons/bi';
+
 export const General = {
   name: 'general',
   title: 'General Settings',
   type: 'document',
   fields: [
     {
-      name: 'title',
-      title: 'title',
+      name: 'name',
+      title: 'name',
       type: 'string',
       hidden: true,
     },
@@ -23,4 +25,13 @@ export const General = {
       validation: (Rule) => Rule.required(),
     },
   ],
+  preview: {
+    select: {
+      name: 'name',
+    },
+    prepare: ({ name }) => ({
+      title: name,
+      media: BiWrench,
+    }),
+  },
 };
