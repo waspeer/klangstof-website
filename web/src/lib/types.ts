@@ -22,6 +22,14 @@ interface Page {
 
 interface Release {
   name: string;
+  releaseDate: string;
+  artwork: any;
 }
 
-export { SliceType, Slice, Page, Release };
+interface ReleaseWithImageUrl {
+  name: string;
+  releaseDate: string;
+  artwork: string;
+}
+
+export { SliceType, Slice, Page, Release, ReleaseWithImageUrl };

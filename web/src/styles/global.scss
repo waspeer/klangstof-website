@@ -1,6 +1,6 @@
 @use 'modern-css-reset/dist/reset.min.css';
-@use 'composition';
 @use 'utilities';
+@use 'composition';
 
 html {
   color: var(--color-text);
@@ -21,6 +21,7 @@ body {
     border: var(--s-300) solid var(--color-text);
     content: '';
     inset: 0;
+    pointer-events: none;
   }
 }
 

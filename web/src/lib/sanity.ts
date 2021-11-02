@@ -1,9 +1,9 @@
 import createImageUrlBuilder from '@sanity/image-url';
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
-import mem from 'mem';
 import * as fetch from 'node-fetch';
+import memoize from 'p-memoize';
 
-import { SliceType } from './types';
+import { PersistentCache } from './development-cache.js';
 
 const projectId = import.meta.env.SNOWPACK_PUBLIC_SANITY_PROJECT;
 const dataset = import.meta.env.SNOWPACK_PUBLIC_SANITY_DATASET;
@@ -27,6 +27,10 @@ const fragments = (() => {
 
   const release = /* groq */ `
     name,
+    releaseDate,
+    artwork {
+      ...
+    },
   `;
 
   const page = /* groq */ `
@@ -50,7 +54,7 @@ function imageUrl(source: SanityImageSource) {
 // QUERY
 // -----
 
-const query = mem(
+const query = memoize(
   async <TData = any>(query: string, parameters?: Record<string, any>): Promise<TData> => {
     const url = new URL(baseUrl);
 
@@ -79,6 +83,10 @@ const query = mem(
       });
 
     return result;
+  },
+  {
+    cache: new PersistentCache(),
+    cacheKey: (arguments_) => arguments_.join(','),
   },
 );
 

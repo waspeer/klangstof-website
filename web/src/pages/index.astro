@@ -18,9 +18,3 @@ const page = await sanity.query<Page>(/* groq */ `
 <Layout title="Klangstof">
     <Slices slices={page.slices} />
 </Layout>
-
-<script type="module">
-    document.querySelectorAll('.collage').forEach((collage) => {
-        new Parallax(collage);
-    })
-</script>

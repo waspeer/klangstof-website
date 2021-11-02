@@ -1,3 +1,5 @@
+import preview from 'part:sanity-plugin-icon-picker/preview';
+
 export const ReleaseLink = {
   name: 'releaseLink',
   title: 'Link',
@@ -25,4 +27,18 @@ export const ReleaseLink = {
       validation: (Rule) => Rule.uri().required(),
     },
   ],
+  preview: {
+    select: {
+      icon: 'icon',
+      name: 'name',
+      url: 'url',
+    },
+    prepare({ icon, name, url }) {
+      return {
+        title: name,
+        subtitle: url,
+        media: preview(icon),
+      };
+    },
+  },
 };

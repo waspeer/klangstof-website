@@ -1,0 +1,20 @@
+---
+import * as sanity from '../lib/sanity.js';
+import { Release, ReleaseWithImageUrl } from '../lib/types.js';
+
+import { ReleaseList } from './release-list.jsx';
+
+const releases: Release[] = await sanity.query(/* groq */ `
+  *[_type == 'release']|order(releaseDate desc) {
+    ${sanity.fragments.release}
+  }
+`);
+
+const releasesWithImageUrls: ReleaseWithImageUrl[] = releases.map((release) => ({
+  ...release,
+  artwork: sanity.imageUrl(release.artwork).auto('format').width(1000).url(),
+}));
+---
+
+<h2>Releases</h2>
+<ReleaseList client:load releases={releasesWithImageUrls} />

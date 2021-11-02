@@ -4,8 +4,8 @@
 // ---------
 
 .container {
-  width: 90vw;
-  width: clamp(16rem, 90vw, 70rem);
+  width: 70vw;
+  width: clamp(16rem, 70vw, 63rem);
   margin-inline: auto;
 }
 
@@ -13,11 +13,9 @@
 // -------
 
 .cluster {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-start;
-  gap: var(--cluster-gap, 1rem);
+  display: grid;
+  grid-gap: var(--gap, var(--s-400));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min, 15ch)), 1fr));
 }
 
 // FLOW
@@ -36,4 +34,12 @@
 
 .flow > * + * {
   margin-top: var(--flow-gap, 1rem);
+}
+
+// FULL BLEED
+// ----------
+
+.full-bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
 }

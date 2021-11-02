@@ -1,0 +1,41 @@
+---
+import { getYear } from 'date-fns';
+import * as sanity from '../lib/sanity.js';
+import { Release } from '../lib/types.js';
+
+export type Props = Release;
+
+const { name, releaseDate: releaseDateString, artwork } = Astro.props as Props;
+
+const releaseDate = new Date(releaseDateString);
+const releaseYear = getYear(releaseDate);
+const imageUrl = sanity.imageUrl(artwork).auto('format').width(1000).url();
+---
+
+<article class="release">
+  <section>
+    <h3>{name}</h3>
+    <time datetime={releaseDateString}>{releaseYear}</time>
+  </section>
+
+  <figure>
+    <img src={imageUrl} />
+  </figure>
+</article>
+
+<style lang="scss">
+  .release {
+    display: grid;
+    align-items: center;
+    gap: var(--s-600);
+    grid-template-columns: 1fr 1fr;
+
+    figure {
+      box-shadow: var(--s-300) var(--s-300) var(--gray-20);
+    }
+
+    section {
+      order: 1;
+    }
+  }
+</style>

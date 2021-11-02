@@ -11,7 +11,7 @@ const {photo} = await sanity.query(/* groq */ `
 const photoUrl = sanity.imageUrl(photo).width(1200).auto('format').url()!;
 ---
 
-<section class="wrapper collage">
+<section class="collage full-bleed">
   <div class="layer" data-depth="0.15">
     <div class="shadow" />
   </div>
@@ -26,9 +26,16 @@ const photoUrl = sanity.imageUrl(photo).width(1200).auto('format').url()!;
   </div>
 </section>
 
+<script type="module" hoist>
+    document.querySelectorAll('.collage').forEach((collage) => {
+        new Parallax(collage);
+    })
+</script>
+
 <style lang="scss">
-  .wrapper {
+  .collage {
     overflow: hidden;
+    min-height: 100vh;
   }
 
   .layer {
