@@ -1,30 +1,15 @@
 {
-  "name": "klangstof-website",
+  "name": "web",
+  "type": "module",
   "version": "0.0.1",
-  "private": true,
   "scripts": {
-    "build": "astro build",
     "dev": "astro dev",
-    "preview": "astro preview"
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@sanity/image-url": "^1.0.1",
-    "modern-css-reset": "^1.4.0",
-    "node-fetch": "^3.0.0",
-    "p-memoize": "^5.0.1",
-    "parallax-js": "^3.1.0"
-  },
-  "devDependencies": {
-    "@astrojs/renderer-solid": "^0.1.1",
-    "astro": "^0.20.8",
-    "lowdb": "^3.0.0",
-    "react": "^17.0",
-    "solid-js": "^1.1.6",
-    "stylelint": "^13.13.1",
-    "stylelint-config-idiomatic-order": "^8.1.0",
-    "stylelint-config-sass-guidelines": "^8.0.0"
-  },
-  "msw": {
-    "workerDirectory": "public"
+    "astro": "^2.8.0"
   }
 }

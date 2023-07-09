@@ -1,7 +1,3 @@
 {
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-  },
+  "extends": "astro/tsconfigs/strictest"
 }
