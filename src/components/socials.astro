@@ -1,0 +1,56 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const socials = [
+  {
+    label: 'Facebook',
+    href: 'https://www.facebook.com/klngstf/',
+    icon: 'fa-brands:facebook-f',
+  },
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/klangstof/',
+    icon: 'fa-brands:instagram',
+  },
+  {
+    label: 'Spotify',
+    href: 'https://open.spotify.com/artist/25lIYhqIj0R1AnnmqsTrtO',
+    icon: 'fa-brands:spotify',
+  },
+  {
+    label: 'Twitter',
+    href: 'https://twitter.com/klangstof',
+    icon: 'fa-brands:twitter',
+  },
+  {
+    label: 'Soundcloud',
+    href: 'https://soundcloud.com/klangstof',
+    icon: 'fa-brands:soundcloud',
+  },
+  {
+    label: 'Youtube',
+    href: 'https://www.youtube.com/c/klangstof',
+    icon: 'fa-brands:youtube',
+  },
+];
+---
+
+<div class="socials cluster">
+  {
+    socials.map(({ label, href, icon }) => (
+      <a href={href} aria-label={label}>
+        <Icon class="icon" name={icon} />
+      </a>
+    ))
+  }
+</div>
+
+<style>
+  .socials {
+    --space: 0;
+
+    & a {
+      padding: var(--size-2);
+    }
+  }
+</style>

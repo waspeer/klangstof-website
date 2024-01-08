@@ -1,0 +1,51 @@
+<h2>
+  <a class="marquee" href="https://merch.klangstof.com/">
+    <div class="marquee__text">
+      Check out our store!
+      <span class="marquee__divider" aria-hidden="true">〰️</span>
+    </div>
+  </a>
+</h2>
+
+<style>
+  h2 {
+    max-width: 100%;
+  }
+
+  /* https://tympanus.net/codrops/2020/03/31/css-only-marquee-effect/ */
+
+  .marquee {
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+    font-family: 'Arial Black', sans-serif;
+    text-decoration: none;
+  }
+
+  .marquee__text {
+    --text-width: 24ch;
+
+    animation: marquee 2s linear infinite;
+    will-change: transform;
+    text-shadow: var(--text-width) 0 currentColor, calc(var(--text-width) * 2) 0 currentColor,
+      calc(var(--text-width) * 3) 0 currentColor, calc(var(--text-width) * 4) 0 currentColor,
+      calc(var(--text-width) * 5) 0 currentColor, calc(var(--text-width) * 6) 0 currentColor;
+    text-transform: uppercase;
+  }
+
+  .marquee__divider {
+    display: inline-block;
+    margin-left: 0.5ch;
+    width: 0;
+    height: 0;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-1 * var(--text-width)));
+    }
+  }
+</style>
