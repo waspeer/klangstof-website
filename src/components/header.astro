@@ -1,0 +1,76 @@
+---
+import Socials from './socials.astro';
+
+import logo from '~/assets/klangstof-logo.svg';
+
+const navItems = [
+  // {
+  //   label: 'Tour',
+  //   href: '#tour',
+  // },
+  // {
+  //   label: 'Store',
+  //   href: 'https://merch.klangstof.com/',
+  // },
+  {
+    label: 'Newsletter',
+    href: '#newsletter',
+  },
+  {
+    label: 'Contact',
+    href: '#contact',
+  },
+];
+---
+
+<header class="header">
+  <nav class="cluster">
+    {navItems.map(({ label, href }) => <a href={href}>{label}</a>)}
+  </nav>
+
+  <img src={logo.src} width={logo.width / 2} height={logo.height / 2} alt="Klangstof Logo" />
+
+  <div class="socials">
+    <Socials />
+  </div>
+</header>
+
+<style>
+  .header {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: var(--font-size-lg);
+
+    & :global(a) {
+      color: var(--gray-4);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--gray-1);
+      }
+    }
+
+    & img {
+      justify-self: center;
+    }
+
+    & .socials {
+      justify-self: end;
+    }
+
+    @media (max-width: 650px) {
+      grid-template-columns: 1fr;
+      gap: var(--size-2);
+      padding: var(--font-size-md);
+
+      & .socials,
+      & nav {
+        justify-self: center;
+      }
+
+      & nav {
+        order: 3;
+      }
+    }
+  }
+</style>

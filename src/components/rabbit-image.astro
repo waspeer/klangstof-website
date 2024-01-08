@@ -1,0 +1,16 @@
+---
+import { getImage } from 'astro:assets';
+
+import backgroundImage from '~/assets/rabbit-background.jpeg';
+
+const sizes = [100, 200, 300, 500, 750, 1000, 1500, 2500];
+const images = await Promise.all(
+  sizes.map(async (size) => ({
+    size,
+    src: (await getImage({ src: backgroundImage, width: size })).src,
+  })),
+);
+const srcset = images.map((image) => `${image.src} ${image.size}w`).join(', ');
+---
+
+<img srcset={srcset} alt="" />

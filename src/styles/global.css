@@ -1,0 +1,275 @@
+/* @layer reset, layouts, global, components; */
+
+@import url('node_modules/destyle.css/destyle.css');
+/* layer(reset); */
+/* @import url('./layouts.css'); */
+/* layer(layouts); */
+
+/* @layer global { */
+:root {
+  --font-weight-bold: 700;
+  --color-bg: white;
+  --color-body: black;
+
+  /* https://www.fluid-type-scale.com/ */
+  --font-size-sm: clamp(0.8rem, -0.09vw + 0.82rem, 0.75rem);
+  --font-size-base: clamp(1rem, 0vw + 1rem, 1rem);
+  --font-size-md: clamp(1.25rem, 0.15vw + 1.21rem, 1.33rem);
+  --font-size-lg: clamp(1.56rem, 0.39vw + 1.47rem, 1.78rem);
+  --font-size-xl: clamp(1.95rem, 0.76vw + 1.76rem, 2.37rem);
+  --font-size-xxl: clamp(2.44rem, 1.3vw + 2.12rem, 3.16rem);
+  --font-size-xxxl: clamp(3.05rem, 2.1vw + 2.53rem, 4.21rem);
+
+  /* Overrides */
+  --stack-space: var(--font-size-base);
+}
+
+html {
+  background-color: rgb(14, 82, 128);
+  overscroll-behavior: none;
+}
+
+body {
+  color: var(--color-body);
+  font-size: var(--font-size-base);
+  line-height: var(--font-lineheight-3);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+figure {
+  margin: 0;
+}
+
+a {
+  text-decoration: underline;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  max-width: 30ch;
+  font-weight: 500;
+  line-height: var(--font-lineheight-0);
+  font-family: 'Lora';
+}
+
+h1 {
+  font-size: var(--font-size-md);
+}
+
+h2 {
+  font-size: var(--font-size-base);
+}
+
+h2 > img {
+  vertical-align: middle;
+  width: auto;
+  height: var(--font-size-xl);
+}
+
+input,
+button {
+  padding: var(--size-2);
+
+  &:focus {
+    outline: 1px solid var(--gray-5);
+  }
+}
+
+button {
+  border: 1px solid hsla(212, 43%, 53%, 1);
+  background: url('https://res.cloudinary.com/wannessalome/image/upload/v1652704222/klangstof/pixels_bdyope.png');
+  color: white;
+  font-weight: 500;
+}
+
+input {
+  border: 1px solid var(--gray-5);
+
+  &::placeholder {
+    color: var(--gray-5);
+  }
+}
+
+img,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+p {
+  margin: 0;
+  max-width: var(--size-content-3);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 2rem;
+  }
+}
+
+.click-area {
+  position: relative;
+}
+
+.click-area > a::before {
+  position: absolute;
+  inset: 0;
+  content: '';
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  position: absolute;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  width: 1px;
+  height: auto;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/*
+  CLUSTER
+*/
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--space, 1rem);
+}
+
+/*
+  ICON
+*/
+
+.icon {
+  width: 1em;
+  height: 1em;
+}
+
+.with-icon {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+/* 
+  GRID
+*/
+
+.grid {
+  grid-gap: 1rem;
+  display: grid;
+}
+
+@supports (width: min(250px, 100%)) {
+  .grid {
+    --grid-min-width: 250px;
+
+    grid-template-columns: repeat(auto-fit, minmax(min(var(--grid-min-width), 100%), 1fr));
+  }
+}
+
+/*
+  PILE
+*/
+
+.pile {
+  display: grid;
+  grid: 'pile';
+}
+
+.pile > * {
+  grid-area: pile;
+}
+
+/*
+  STACK
+*/
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--stack-space, 1.5rem);
+}
+
+/*
+  SWITCHER
+*/
+
+.switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space, 1rem);
+}
+
+.switcher > * {
+  flex-grow: 1;
+  flex-basis: calc((var(--switcher-threshold, 30rem) - 100%) * 999);
+}
+
+.switcher > :nth-last-child(n + 5),
+.switcher > :nth-last-child(n + 5) ~ * {
+  flex-basis: 100%;
+}
+
+/*
+  WITH MEDIA
+*/
+
+.with-media > * {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/*
+  WITH SIDEBAR
+*/
+
+.with-sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space, 1rem);
+}
+
+.with-sidebar > :first-child {
+  flex-grow: 1;
+}
+
+.with-sidebar > :last-child {
+  flex-grow: 999;
+  flex-basis: 0;
+  min-inline-size: 50%;
+}
+
+/*
+  WRAPPER
+*/
+
+.wrapper {
+  --wrapper-padding: 1.5rem;
+
+  display: grid;
+  grid-template-columns: 1fr min(70rem, calc(100% - var(--wrapper-padding) * 2)) 1fr;
+  gap: var(--wrapper-padding);
+  overflow-x: hidden;
+}
+
+.wrapper > * {
+  grid-column: 2;
+}
+
+.full-bleed {
+  grid-column: 1 / 4;
+  width: 100%;
+}

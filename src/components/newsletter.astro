@@ -1,0 +1,41 @@
+---
+import title from '~/assets/subscribe.svg';
+---
+
+<div class="stack">
+  <h2>
+    <img src={title.src} width={title.width} height={title.height} alt="Subscribe" />
+  </h2>
+
+  <p>Sign up to receive news and updates.</p>
+
+  <form action="https://klangstof.us4.list-manage.com/subscribe/post" method="POST">
+    <input type="hidden" name="u" value="04a7e300652dbbd94d6ad9f6f" />
+    <input type="hidden" name="id" value="4f625239ad" />
+    <input
+      type="email"
+      autocapitalize="off"
+      autocorrect="off"
+      name="MERGE0"
+      id="MERGE0"
+      size="25"
+      value=""
+      placeholder="Email Address"
+    />
+    <button type="submit">Sign Up</button>
+  </form>
+</div>
+
+<style>
+  form {
+    display: flex;
+    gap: var(--size-1);
+    width: 100%;
+    max-width: 20rem;
+
+    & input {
+      flex: 1;
+      width: 100%;
+    }
+  }
+</style>

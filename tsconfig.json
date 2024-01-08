@@ -1,29 +1,9 @@
 {
-  /* Poetic base style configuration */
-  "extends": "./node_modules/poetic/config/typescript/tsconfig.json",
-  /* Add your custom configuration after this */
-  "include": ["src/**/*", "test/**/*"],
+  "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
-    "target": "es5",
-    "outDir": "dist",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "isolatedModules": true,
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "allowJs": true,
-    "jsx": "react",
-    "noEmit": true,
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "#components/*": ["./components/*"],
-      "#lib/*": ["./lib/*"],
-      "#pages/*": ["./pages/*"],
-      "#images/*": ["./images/*"],
-      "#test/*": ["../test/*"]
+      "~/*": ["src/*"]
     }
   }
 }
